@@ -19,7 +19,7 @@ body {
   border-bottom: 1px solid #eee;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
 }
 
 .nav {
@@ -38,14 +38,28 @@ body {
   color: #6d28d9;
 }
 
-nav a {
-  margin-left: 20px;
+/* Menú de navegación */
+.nav-menu {
+  display: flex;
+  gap: 20px;
+}
+.nav-menu a {
   text-decoration: none;
   color: #555;
   font-weight: 500;
   transition: color 0.3s;
 }
-nav a:hover {
+.nav-menu a:hover {
+  color: #6d28d9;
+}
+
+/* Botón hamburguesa (oculto en desktop) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
   color: #6d28d9;
 }
 
@@ -186,80 +200,6 @@ nav a:hover {
 .java { color: #007396; }
 .python { color: #3776ab; }
 
-/* === TRAYECTORIA === */
-.trayectoria-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  text-align: left;
-}
-.trayectoria-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  padding: 20px;
-}
-.trayectoria-card h3 {
-  margin-top: 0;
-  color: #6d28d9;
-}
-.trayectoria-item {
-  margin-bottom: 20px;
-}
-.cargo {
-  font-weight: bold;
-  color: #111;
-}
-.periodo {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 8px;
-}
-.trayectoria-item ul {
-  padding-left: 20px;
-  margin: 0;
-}
-.trayectoria-item li {
-  margin-bottom: 6px;
-  font-size: 0.95rem;
-}
-
-/* === CONTACTO === */
-.contact p {
-  margin-bottom: 20px;
-}
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 6px;
-  background: #6d28d9;
-  color: white;
-  text-decoration: none;
-  margin: 5px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-.btn:hover {
-  background: #4f46e5;
-}
-.btn-alt {
-  background: white;
-  color: #6d28d9;
-  border: 2px solid #6d28d9;
-}
-.btn-alt:hover {
-  background: #f3f4f6;
-}
-
-/* === FOOTER === */
-footer {
-  background: #111;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-}
-
 /* === TIMELINE === */
 .timeline {
   position: relative;
@@ -327,4 +267,77 @@ footer {
 }
 [data-aos].aos-animate {
   opacity: 1;
+}
+
+/* === CONTACTO === */
+.contact p {
+  margin-bottom: 20px;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: #6d28d9;
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #4f46e5;
+}
+.btn-alt {
+  background: white;
+  color: #6d28d9;
+  border: 2px solid #6d28d9;
+}
+.btn-alt:hover {
+  background: #f3f4f6;
+}
+
+/* === FOOTER === */
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+/* === RESPONSIVE NAVBAR === */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: white;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: none;
+  }
+
+  .nav-menu.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
+/* Animación para menú */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

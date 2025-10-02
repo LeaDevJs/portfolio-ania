@@ -96,11 +96,23 @@ function App() {
 
   return (
     <>
-      {/* HEADER */}
+            {/* HEADER */}
       <header className="header">
         <div className="container nav">
           <h1 className="logo">AZ <span>Portfolio</span></h1>
-          <nav>
+
+          {/* Botón hamburguesa */}
+          <button
+            className="nav-toggle"
+            onClick={() =>
+              document.querySelector(".nav-menu").classList.toggle("active")
+            }
+          >
+            ☰
+          </button>
+
+          {/* Menú de navegación */}
+          <nav className="nav-menu">
             <a href="#sobre-mi">Sobre mí</a>
             <a href="#proyectos">Proyectos</a>
             <a href="#skills">Skills</a>
@@ -109,6 +121,7 @@ function App() {
           </nav>
         </div>
       </header>
+
 
       {/* HERO */}
       <section id="sobre-mi" className="hero">
